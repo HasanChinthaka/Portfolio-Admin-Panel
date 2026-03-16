@@ -24,4 +24,4 @@ jobs:
           SOURCE: "dist/" # Vite nam 'dist', path eka check karanna
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: "/var/www/portfolio/frontend/dist" # Admin repo ekata nam methana 'admin/dist' danna
+          TARGET: "/var/www/portfolio/admin/dist" # Admin repo ekata nam methana 'admin/dist' danna
