@@ -53,6 +53,8 @@ export function TestimonialEdit() {
     }),
   };
 
+  const displaySrc = previewUrl ?? record?.avatar ?? null;
+
   return (
     <Edit saveButtonProps={customSave} resource="testimonials">
       <Stack spacing={2} mt={2}>
@@ -104,14 +106,14 @@ export function TestimonialEdit() {
           )}
         />
         <Box>
-          {(previewUrl ?? record?.avatar) && (
+          {displaySrc && (
             <Box mb={1}>
               <Typography variant="body2" color="text.secondary" mb={0.5}>
                 {previewUrl ? "New Image Preview" : "Current Avatar"}
               </Typography>
               <Box
                 component="img"
-                src={previewUrl ?? record.avatar}
+                src={displaySrc}
                 alt="preview"
                 sx={{ maxWidth: 120, maxHeight: 120, objectFit: "cover", display: "block", borderRadius: "50%", border: "1px solid", borderColor: "divider" }}
               />

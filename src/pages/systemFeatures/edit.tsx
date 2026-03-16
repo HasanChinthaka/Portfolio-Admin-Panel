@@ -53,6 +53,10 @@ export function SystemFeatureEdit() {
     }),
   };
 
+  const logoSrc = logoPreview ?? record?.logo ?? null;
+  const faviconSrc = faviconPreview ?? record?.favicon ?? null;
+  const heroSrc = heroPreview ?? record?.heroImage ?? null;
+
   return (
     <Edit saveButtonProps={customSave} resource="system-features">
       <Stack spacing={2} mt={2}>
@@ -108,10 +112,10 @@ export function SystemFeatureEdit() {
         <Box display="flex" gap={3} flexWrap="wrap">
           <Box>
             <Typography variant="body2" color="text.secondary" mb={0.5}>Logo</Typography>
-            {(logoPreview ?? record?.logo) && (
+            {logoSrc && (
               <Box
                 component="img"
-                src={logoPreview ?? record.logo}
+                src={logoSrc}
                 alt="logo preview"
                 sx={{ maxWidth: 80, maxHeight: 80, objectFit: "contain", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider", mb: 1 }}
               />
@@ -128,10 +132,10 @@ export function SystemFeatureEdit() {
           </Box>
           <Box>
             <Typography variant="body2" color="text.secondary" mb={0.5}>Favicon</Typography>
-            {(faviconPreview ?? record?.favicon) && (
+            {faviconSrc && (
               <Box
                 component="img"
-                src={faviconPreview ?? record.favicon}
+                src={faviconSrc}
                 alt="favicon preview"
                 sx={{ maxWidth: 48, maxHeight: 48, objectFit: "contain", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider", mb: 1 }}
               />
@@ -148,10 +152,10 @@ export function SystemFeatureEdit() {
           </Box>
           <Box>
             <Typography variant="body2" color="text.secondary" mb={0.5}>Hero Image</Typography>
-            {(heroPreview ?? record?.heroImage) && (
+            {heroSrc && (
               <Box
                 component="img"
-                src={heroPreview ?? record.heroImage}
+                src={heroSrc}
                 alt="hero preview"
                 sx={{ maxWidth: 200, maxHeight: 120, objectFit: "cover", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider", mb: 1 }}
               />

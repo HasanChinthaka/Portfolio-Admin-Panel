@@ -56,6 +56,8 @@ export function SkillEdit() {
     }),
   };
 
+  const displaySrc = previewUrl ?? record?.logo ?? null;
+
   return (
     <Edit saveButtonProps={customSave} resource="skills">
       <Stack spacing={2} mt={2}>
@@ -117,14 +119,14 @@ export function SkillEdit() {
         />
 
         <Box>
-          {(previewUrl ?? record?.logo) && (
+          {displaySrc && (
             <Box mb={1}>
               <Typography variant="body2" color="text.secondary" mb={0.5}>
                 {previewUrl ? "New Image Preview" : "Current Logo"}
               </Typography>
               <Box
                 component="img"
-                src={previewUrl ?? record.logo}
+                src={displaySrc}
                 alt="preview"
                 sx={{ maxWidth: 120, maxHeight: 120, objectFit: "contain", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider" }}
               />
