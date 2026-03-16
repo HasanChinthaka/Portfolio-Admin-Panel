@@ -29,14 +29,14 @@ export function SkillEdit() {
     handleSubmit,
     control,
     setValue,
-    refineCore: { onFinish, queryResult },
+    refineCore: { onFinish, query },
     formState: { errors },
   } = useForm({ refineCoreProps: { resource: "skills" } });
 
-  const record = queryResult?.data?.data;
+  const record = query?.data?.data;
 
-  const { data: categoriesData } = useList({ resource: "skills-category", pagination: { mode: "off" } });
-  const categories = categoriesData?.data ?? [];
+  const { result: categoriesResult } = useList({ resource: "skills-category", pagination: { mode: "off" } });
+  const categories = categoriesResult.data ?? [];
 
   useEffect(() => {
     if (record) {

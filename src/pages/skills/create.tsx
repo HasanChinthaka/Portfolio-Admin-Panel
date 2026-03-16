@@ -31,8 +31,8 @@ export function SkillCreate() {
     formState: { errors },
   } = useForm({ refineCoreProps: { resource: "skills" } });
 
-  const { data: categoriesData } = useList({ resource: "skills-category", pagination: { mode: "off" } });
-  const categories = categoriesData?.data ?? [];
+  const { result: categoriesResult } = useList({ resource: "skills-category", pagination: { mode: "off" } });
+  const categories = categoriesResult.data ?? [];
 
   const customSave = {
     ...saveButtonProps,

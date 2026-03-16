@@ -48,7 +48,7 @@ export function SkillCategoryList() {
       {isLoading ? (
         <Grid container spacing={2} p={1}>
           {[...Array(6)].map((_, i) => (
-            <Grid item xs={12} sm={6} md={4} key={i}>
+            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={i}>
               <Skeleton variant="rounded" height={130} />
             </Grid>
           ))}
@@ -78,7 +78,7 @@ export function SkillCategoryList() {
             const letter = (row.name ?? "?")[0].toUpperCase();
 
             return (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={row.id}>
+              <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={row.id}>
                 <Card
                   sx={{
                     height: "100%",

@@ -23,7 +23,7 @@ import { useState } from "react";
 
 export function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const { mutate: login, isLoading, error } = useLogin();
+  const { mutate: login, isPending: isLoading, error } = useLogin();
 
   const {
     register,
