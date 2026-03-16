@@ -17,7 +17,6 @@ import routerBindings, {
   NavigateToResource,
   CatchAllNavigate,
   UnsavedChangesNotifier,
-  DocumentTitleHandler,
 } from "@refinedev/react-router";
 import { theme } from "./theme";
 import { CustomSider } from "./components/CustomSider";
@@ -337,7 +336,6 @@ function App() {
             <Route path="*" element={<ErrorComponent />} />
           </Routes>
           <UnsavedChangesNotifier />
-          <DocumentTitleHandler />
         </Refine>
         </RefineSnackbarProvider>
       </ThemeProvider>
