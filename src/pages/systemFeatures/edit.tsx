@@ -11,13 +11,15 @@ import {
   Typography,
   Box,
   Divider,
-  Avatar,
 } from "@mui/material";
 
 export function SystemFeatureEdit() {
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [faviconFile, setFaviconFile] = useState<File | null>(null);
   const [heroFile, setHeroFile] = useState<File | null>(null);
+  const [logoPreview, setLogoPreview] = useState<string | null>(null);
+  const [faviconPreview, setFaviconPreview] = useState<string | null>(null);
+  const [heroPreview, setHeroPreview] = useState<string | null>(null);
 
   const {
     saveButtonProps,
@@ -106,30 +108,61 @@ export function SystemFeatureEdit() {
         <Box display="flex" gap={3} flexWrap="wrap">
           <Box>
             <Typography variant="body2" color="text.secondary" mb={0.5}>Logo</Typography>
-            {record?.logo && <Avatar src={record.logo} sx={{ mb: 1 }} />}
+            {(logoPreview ?? record?.logo) && (
+              <Box
+                component="img"
+                src={logoPreview ?? record.logo}
+                alt="logo preview"
+                sx={{ maxWidth: 80, maxHeight: 80, objectFit: "contain", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider", mb: 1 }}
+              />
+            )}
             <Button variant="outlined" component="label" size="small">
               {record?.logo ? "Replace Logo" : "Upload Logo"}
-              <input type="file" hidden accept="image/*" onChange={(e) => setLogoFile(e.target.files?.[0] ?? null)} />
+              <input type="file" hidden accept="image/*" onChange={(e) => {
+                const f = e.target.files?.[0] ?? null;
+                setLogoFile(f);
+                setLogoPreview(f ? URL.createObjectURL(f) : null);
+              }} />
             </Button>
             {logoFile && <Typography variant="body2">{logoFile.name}</Typography>}
           </Box>
           <Box>
             <Typography variant="body2" color="text.secondary" mb={0.5}>Favicon</Typography>
-            {record?.favicon && <Avatar src={record.favicon} sx={{ mb: 1 }} />}
+            {(faviconPreview ?? record?.favicon) && (
+              <Box
+                component="img"
+                src={faviconPreview ?? record.favicon}
+                alt="favicon preview"
+                sx={{ maxWidth: 48, maxHeight: 48, objectFit: "contain", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider", mb: 1 }}
+              />
+            )}
             <Button variant="outlined" component="label" size="small">
               {record?.favicon ? "Replace Favicon" : "Upload Favicon"}
-              <input type="file" hidden accept="image/*" onChange={(e) => setFaviconFile(e.target.files?.[0] ?? null)} />
+              <input type="file" hidden accept="image/*" onChange={(e) => {
+                const f = e.target.files?.[0] ?? null;
+                setFaviconFile(f);
+                setFaviconPreview(f ? URL.createObjectURL(f) : null);
+              }} />
             </Button>
             {faviconFile && <Typography variant="body2">{faviconFile.name}</Typography>}
           </Box>
           <Box>
             <Typography variant="body2" color="text.secondary" mb={0.5}>Hero Image</Typography>
-            {record?.heroImage && (
-              <Avatar src={record.heroImage} variant="rounded" sx={{ width: 80, height: 50, mb: 1 }} />
+            {(heroPreview ?? record?.heroImage) && (
+              <Box
+                component="img"
+                src={heroPreview ?? record.heroImage}
+                alt="hero preview"
+                sx={{ maxWidth: 200, maxHeight: 120, objectFit: "cover", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider", mb: 1 }}
+              />
             )}
             <Button variant="outlined" component="label" size="small">
               {record?.heroImage ? "Replace Hero" : "Upload Hero"}
-              <input type="file" hidden accept="image/*" onChange={(e) => setHeroFile(e.target.files?.[0] ?? null)} />
+              <input type="file" hidden accept="image/*" onChange={(e) => {
+                const f = e.target.files?.[0] ?? null;
+                setHeroFile(f);
+                setHeroPreview(f ? URL.createObjectURL(f) : null);
+              }} />
             </Button>
             {heroFile && <Typography variant="body2">{heroFile.name}</Typography>}
           </Box>

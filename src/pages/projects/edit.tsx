@@ -17,11 +17,11 @@ import {
   OutlinedInput,
   Chip,
   Box,
-  Avatar,
 } from "@mui/material";
 
 export function ProjectEdit() {
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const {
     saveButtonProps,
@@ -218,15 +218,16 @@ export function ProjectEdit() {
         />
 
         <Box>
-          {record?.imageUrl && (
+          {(previewUrl ?? record?.imageUrl) && (
             <Box mb={1}>
               <Typography variant="body2" color="text.secondary" mb={0.5}>
-                Current Image
+                {previewUrl ? "New Image Preview" : "Current Image"}
               </Typography>
-              <Avatar
-                src={record.imageUrl}
-                variant="rounded"
-                sx={{ width: 80, height: 80 }}
+              <Box
+                component="img"
+                src={previewUrl ?? record.imageUrl}
+                alt="preview"
+                sx={{ maxWidth: 200, maxHeight: 150, objectFit: "contain", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider" }}
               />
             </Box>
           )}
@@ -236,7 +237,11 @@ export function ProjectEdit() {
               type="file"
               hidden
               accept="image/*"
-              onChange={(e) => setImageFile(e.target.files?.[0] ?? null)}
+              onChange={(e) => {
+                const file = e.target.files?.[0] ?? null;
+                setImageFile(file);
+                setPreviewUrl(file ? URL.createObjectURL(file) : null);
+              }}
             />
           </Button>
           {imageFile && (
