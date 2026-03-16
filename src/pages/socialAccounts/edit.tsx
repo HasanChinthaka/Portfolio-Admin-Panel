@@ -10,11 +10,11 @@ export function SocialAccountEdit() {
     register,
     control,
     setValue,
-    refineCore: { queryResult },
+    refineCore: { query },
     formState: { errors },
   } = useForm({ refineCoreProps: { resource: "social-account" } });
 
-  const record = queryResult?.data?.data;
+  const record = query?.data?.data;
 
   useEffect(() => {
     if (record) {

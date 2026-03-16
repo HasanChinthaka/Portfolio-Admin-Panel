@@ -29,8 +29,8 @@ export function TestimonialCreate() {
     formState: { errors },
   } = useForm({ refineCoreProps: { resource: "testimonials" } });
 
-  const { data: clientsData } = useList({ resource: "clients", pagination: { mode: "off" } });
-  const clients = clientsData?.data ?? [];
+  const { result: clientsResult } = useList({ resource: "clients", pagination: { mode: "off" } });
+  const clients = clientsResult.data ?? [];
 
   const customSave = {
     ...saveButtonProps,

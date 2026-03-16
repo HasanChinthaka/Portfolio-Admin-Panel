@@ -31,13 +31,13 @@ export function ProjectCreate() {
     formState: { errors },
   } = useForm({ refineCoreProps: { resource: "projects" } });
 
-  const { data: skillsData } = useList({ resource: "skills", pagination: { mode: "off" } });
-  const { data: categoriesData } = useList({ resource: "projects-category", pagination: { mode: "off" } });
-  const { data: clientsData } = useList({ resource: "clients", pagination: { mode: "off" } });
+  const { result: skillsResult } = useList({ resource: "skills", pagination: { mode: "off" } });
+  const { result: categoriesResult } = useList({ resource: "projects-category", pagination: { mode: "off" } });
+  const { result: clientsResult } = useList({ resource: "clients", pagination: { mode: "off" } });
 
-  const skills = skillsData?.data ?? [];
-  const categories = categoriesData?.data ?? [];
-  const clients = clientsData?.data ?? [];
+  const skills = skillsResult.data ?? [];
+  const categories = categoriesResult.data ?? [];
+  const clients = clientsResult.data ?? [];
 
   const customSave = {
     ...saveButtonProps,

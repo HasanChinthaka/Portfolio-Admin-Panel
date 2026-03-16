@@ -25,10 +25,10 @@ export function SystemFeatureEdit() {
     handleSubmit,
     control,
     setValue,
-    refineCore: { onFinish, queryResult },
+    refineCore: { onFinish, query },
   } = useForm({ refineCoreProps: { resource: "system-features" } });
 
-  const record = queryResult?.data?.data;
+  const record = query?.data?.data;
 
   useEffect(() => {
     if (record) {

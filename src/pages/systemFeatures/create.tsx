@@ -24,7 +24,7 @@ export function SystemFeatureCreate() {
     handleSubmit,
     control,
     refineCore: { onFinish },
-    formState: { errors },
+    formState: {},
   } = useForm({ refineCoreProps: { resource: "system-features" } });
 
   const customSave = {

@@ -364,7 +364,7 @@ export function Dashboard() {
       </Typography>
       <Grid container spacing={2} mb={3}>
         {STAT_CARDS.map((card) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={card.resource}>
+          <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={card.resource}>
             <StatCard {...card} />
           </Grid>
         ))}
@@ -425,7 +425,7 @@ export function Dashboard() {
                 ],
               },
             ].map(({ section, items }) => (
-              <Grid item xs={12} md={6} key={section}>
+              <Grid size={{ xs: 12, md: 6 }} key={section}>
                 <Box px={2.5} py={1.5}>
                   <Typography
                     variant="caption"

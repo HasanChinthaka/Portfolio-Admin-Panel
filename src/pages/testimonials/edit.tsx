@@ -27,13 +27,13 @@ export function TestimonialEdit() {
     handleSubmit,
     control,
     setValue,
-    refineCore: { onFinish, queryResult },
+    refineCore: { onFinish, query },
     formState: { errors },
   } = useForm({ refineCoreProps: { resource: "testimonials" } });
 
-  const record = queryResult?.data?.data;
-  const { data: clientsData } = useList({ resource: "clients", pagination: { mode: "off" } });
-  const clients = clientsData?.data ?? [];
+  const record = query?.data?.data;
+  const { result: clientsResult } = useList({ resource: "clients", pagination: { mode: "off" } });
+  const clients = clientsResult.data ?? [];
 
   useEffect(() => {
     if (record) {

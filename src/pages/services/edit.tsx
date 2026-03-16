@@ -22,11 +22,11 @@ export function ServiceEdit() {
     handleSubmit,
     control,
     setValue,
-    refineCore: { onFinish, queryResult },
+    refineCore: { onFinish, query },
     formState: { errors },
   } = useForm({ refineCoreProps: { resource: "services" } });
 
-  const record = queryResult?.data?.data;
+  const record = query?.data?.data;
 
   useEffect(() => {
     if (record) {
