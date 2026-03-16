@@ -39,9 +39,9 @@ export function ProjectEdit() {
   const { result: categoriesResult } = useList({ resource: "projects-category", pagination: { mode: "off" } });
   const { result: clientsResult } = useList({ resource: "clients", pagination: { mode: "off" } });
 
-  const skills = skillsResult.data ?? [];
-  const categories = categoriesResult.data ?? [];
-  const clients = clientsResult.data ?? [];
+  const skills = skillsResult?.data ?? [];
+  const categories = categoriesResult?.data ?? [];
+  const clients = clientsResult?.data ?? [];
 
   useEffect(() => {
     if (record) {
@@ -225,11 +225,10 @@ export function ProjectEdit() {
               <Typography variant="body2" color="text.secondary" mb={0.5}>
                 {previewUrl ? "New Image Preview" : "Current Image"}
               </Typography>
-              <Box
-                component="img"
+              <img
                 src={displaySrc}
                 alt="preview"
-                sx={{ maxWidth: 200, maxHeight: 150, objectFit: "contain", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider" }}
+                style={{ maxWidth: "200px", maxHeight: "150px", objectFit: "contain", display: "block", borderRadius: "4px", border: "1px solid rgba(0,0,0,0.12)" }}
               />
             </Box>
           )}
