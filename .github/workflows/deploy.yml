@@ -11,6 +11,21 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: Fetch .env from Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: cat /var/www/portfolio/admin/.env
+
+      - name: Pull .env file
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
+          chmod 600 private_key
+          scp -o StrictHostKeyChecking=no -i private_key ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/var/www/portfolio/admin/.env .
+          rm private_key
+
       - name: Install and Build
         run: |
           npm install
