@@ -2,7 +2,7 @@
 
 > **Base URL:** `https://your-domain.com`
 > **Version:** 1.0.0
-> **Last Updated:** 2026-03-10
+> **Last Updated:** 2026-03-17
 
 ---
 
@@ -517,6 +517,15 @@ Get all projects (including unpublished).
 
 ---
 
+### GET /admin/projects/:id
+
+Get a single project by ID.
+
+**Response `200`:** Single project object
+**Response `404`:** Project not found
+
+---
+
 ### POST /admin/projects
 
 Create a new project.
@@ -563,6 +572,13 @@ Delete a project. Also deletes the project image from ImageKit.
 
 **Response `200`:** Array of `{ _id, name }`
 
+### GET /admin/projects-category/:id
+
+Get a single project category by ID.
+
+**Response `200`:** Single category object
+**Response `404`:** Category not found
+
 ### POST /admin/projects-category
 
 **Request Body:**
@@ -587,6 +603,13 @@ Delete a project. Also deletes the project image from ImageKit.
 ### GET /admin/skills
 
 **Response `200`:** Array of skill objects (including private ones)
+
+### GET /admin/skills/:id
+
+Get a single skill by ID.
+
+**Response `200`:** Single skill object
+**Response `404`:** Skill not found
 
 ### POST /admin/skills
 
@@ -619,6 +642,13 @@ Same fields as POST.
 
 **Response `200`:** Array of `{ _id, name }`
 
+### GET /admin/skills-category/:id
+
+Get a single skill category by ID.
+
+**Response `200`:** Single category object
+**Response `404`:** Category not found
+
 ### POST /admin/skills-category
 
 **Request Body:** `{ "name": "string (required, unique)" }`
@@ -639,6 +669,13 @@ Same fields as POST.
 ### GET /admin/services
 
 **Response `200`:** All services (including unpublished)
+
+### GET /admin/services/:id
+
+Get a single service by ID.
+
+**Response `200`:** Single service object
+**Response `404`:** Service not found
 
 ### POST /admin/services
 
@@ -671,6 +708,13 @@ Same fields as POST.
 ### GET /admin/contact-info
 
 **Response `200`:** All contact info entries (including private)
+
+### GET /admin/contact-info/:id
+
+Get a single contact info entry by ID.
+
+**Response `200`:** Single contact info object
+**Response `404`:** Entry not found
 
 ### POST /admin/contact-info
 
@@ -705,6 +749,13 @@ Same fields as POST.
 
 **Response `200`:** All social accounts (including private)
 
+### GET /admin/social-account/:id
+
+Get a single social account by ID.
+
+**Response `200`:** Single social account object
+**Response `404`:** Account not found
+
 ### POST /admin/social-account
 
 **Request Body:**
@@ -735,6 +786,13 @@ Same fields as POST.
 ### GET /admin/blogs
 
 **Response `200`:** All blogs (including unpublished)
+
+### GET /admin/blogs/:id
+
+Get a single blog by ID.
+
+**Response `200`:** Single blog object
+**Response `404`:** Blog not found
 
 ### POST /admin/blogs
 
@@ -769,6 +827,13 @@ Same fields as POST.
 ### GET /admin/educations
 
 **Response `200`:** All education records (including private)
+
+### GET /admin/educations/:id
+
+Get a single education record by ID.
+
+**Response `200`:** Single education object
+**Response `404`:** Record not found
 
 ### POST /admin/educations
 
@@ -805,6 +870,13 @@ Same fields as POST.
 
 **Response `200`:** All work experiences (including private)
 
+### GET /admin/work-experiences/:id
+
+Get a single work experience by ID.
+
+**Response `200`:** Single work experience object
+**Response `404`:** Record not found
+
 ### POST /admin/work-experiences
 
 **Content-Type:** `multipart/form-data`
@@ -839,6 +911,13 @@ Same fields as POST.
 
 **Response `200`:** All clients (including private)
 
+### GET /admin/clients/:id
+
+Get a single client by ID.
+
+**Response `200`:** Single client object
+**Response `404`:** Client not found
+
 ### POST /admin/clients
 
 **Content-Type:** `multipart/form-data`
@@ -868,6 +947,13 @@ Same fields as POST.
 ### GET /admin/testimonials
 
 **Response `200`:** All testimonials (including unpublished)
+
+### GET /admin/testimonials/:id
+
+Get a single testimonial by ID.
+
+**Response `200`:** Single testimonial object
+**Response `404`:** Testimonial not found
 
 ### POST /admin/testimonials
 
@@ -1254,28 +1340,40 @@ Admin routes (`/admin/*`) are **not affected** by maintenance mode.
 | POST | `/auth/register` | Register new user |
 | POST | `/auth/login` | Login (admin only) |
 | GET/POST | `/admin/projects` | List / Create projects |
+| GET | `/admin/projects/:id` | Get single project |
 | PUT/DELETE | `/admin/projects/:id` | Update / Delete project |
 | GET/POST | `/admin/projects-category` | List / Create project categories |
+| GET | `/admin/projects-category/:id` | Get single project category |
 | PUT/DELETE | `/admin/projects-category/:id` | Update / Delete category |
 | GET/POST | `/admin/skills` | List / Create skills |
+| GET | `/admin/skills/:id` | Get single skill |
 | PUT/DELETE | `/admin/skills/:id` | Update / Delete skill |
 | GET/POST | `/admin/skills-category` | List / Create skill categories |
+| GET | `/admin/skills-category/:id` | Get single skill category |
 | PUT/DELETE | `/admin/skills-category/:id` | Update / Delete category |
 | GET/POST | `/admin/services` | List / Create services |
+| GET | `/admin/services/:id` | Get single service |
 | PUT/DELETE | `/admin/services/:id` | Update / Delete service |
 | GET/POST | `/admin/contact-info` | List / Create contact info |
+| GET | `/admin/contact-info/:id` | Get single contact info entry |
 | PUT/DELETE | `/admin/contact-info/:id` | Update / Delete contact info |
 | GET/POST | `/admin/social-account` | List / Create social accounts |
+| GET | `/admin/social-account/:id` | Get single social account |
 | PUT/DELETE | `/admin/social-account/:id` | Update / Delete account |
 | GET/POST | `/admin/blogs` | List / Create blogs |
+| GET | `/admin/blogs/:id` | Get single blog |
 | PUT/DELETE | `/admin/blogs/:id` | Update / Delete blog |
 | GET/POST | `/admin/educations` | List / Create education records |
+| GET | `/admin/educations/:id` | Get single education record |
 | PUT/DELETE | `/admin/educations/:id` | Update / Delete record |
 | GET/POST | `/admin/work-experiences` | List / Create work experiences |
+| GET | `/admin/work-experiences/:id` | Get single work experience |
 | PUT/DELETE | `/admin/work-experiences/:id` | Update / Delete experience |
 | GET/POST | `/admin/clients` | List / Create clients |
+| GET | `/admin/clients/:id` | Get single client |
 | PUT/DELETE | `/admin/clients/:id` | Update / Delete client |
 | GET/POST | `/admin/testimonials` | List / Create testimonials |
+| GET | `/admin/testimonials/:id` | Get single testimonial |
 | PUT/DELETE | `/admin/testimonials/:id` | Update / Delete testimonial |
 | GET/POST | `/admin/system-features` | List / Create system config |
 | PUT/DELETE | `/admin/system-features/:id` | Update / Delete config |

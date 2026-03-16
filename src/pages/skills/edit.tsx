@@ -15,13 +15,13 @@ import {
   Button,
   Typography,
   Box,
-  Avatar,
 } from "@mui/material";
 
 const SKILL_LEVELS = ["Beginner", "Intermediate", "Advanced", "Expert"];
 
 export function SkillEdit() {
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const {
     saveButtonProps,
@@ -117,12 +117,17 @@ export function SkillEdit() {
         />
 
         <Box>
-          {record?.logo && (
+          {(previewUrl ?? record?.logo) && (
             <Box mb={1}>
               <Typography variant="body2" color="text.secondary" mb={0.5}>
-                Current Logo
+                {previewUrl ? "New Image Preview" : "Current Logo"}
               </Typography>
-              <Avatar src={record.logo} sx={{ width: 48, height: 48 }} />
+              <Box
+                component="img"
+                src={previewUrl ?? record.logo}
+                alt="preview"
+                sx={{ maxWidth: 120, maxHeight: 120, objectFit: "contain", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider" }}
+              />
             </Box>
           )}
           <Button variant="outlined" component="label">
@@ -131,7 +136,11 @@ export function SkillEdit() {
               type="file"
               hidden
               accept="image/*"
-              onChange={(e) => setImageFile(e.target.files?.[0] ?? null)}
+              onChange={(e) => {
+                const file = e.target.files?.[0] ?? null;
+                setImageFile(file);
+                setPreviewUrl(file ? URL.createObjectURL(file) : null);
+              }}
             />
           </Button>
           {imageFile && (
