@@ -99,11 +99,10 @@ export function ServiceEdit() {
               <Typography variant="body2" color="text.secondary" mb={0.5}>
                 {previewUrl ? "New Image Preview" : "Current Logo"}
               </Typography>
-              <Box
-                component="img"
+              <img
                 src={displaySrc}
                 alt="preview"
-                sx={{ maxWidth: 120, maxHeight: 120, objectFit: "contain", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider" }}
+                style={{ maxWidth: "120px", maxHeight: "120px", objectFit: "contain", display: "block", borderRadius: "4px", border: "1px solid rgba(0,0,0,0.12)" }}
               />
             </Box>
           )}

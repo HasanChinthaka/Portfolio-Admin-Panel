@@ -113,11 +113,10 @@ export function SystemFeatureEdit() {
           <Box>
             <Typography variant="body2" color="text.secondary" mb={0.5}>Logo</Typography>
             {logoSrc && (
-              <Box
-                component="img"
+              <img
                 src={logoSrc}
                 alt="logo preview"
-                sx={{ maxWidth: 80, maxHeight: 80, objectFit: "contain", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider", mb: 1 }}
+                style={{ maxWidth: "80px", maxHeight: "80px", objectFit: "contain", display: "block", borderRadius: "4px", border: "1px solid rgba(0,0,0,0.12)", marginBottom: "8px" }}
               />
             )}
             <Button variant="outlined" component="label" size="small">
@@ -133,11 +132,10 @@ export function SystemFeatureEdit() {
           <Box>
             <Typography variant="body2" color="text.secondary" mb={0.5}>Favicon</Typography>
             {faviconSrc && (
-              <Box
-                component="img"
+              <img
                 src={faviconSrc}
                 alt="favicon preview"
-                sx={{ maxWidth: 48, maxHeight: 48, objectFit: "contain", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider", mb: 1 }}
+                style={{ maxWidth: "48px", maxHeight: "48px", objectFit: "contain", display: "block", borderRadius: "4px", border: "1px solid rgba(0,0,0,0.12)", marginBottom: "8px" }}
               />
             )}
             <Button variant="outlined" component="label" size="small">
@@ -153,11 +151,10 @@ export function SystemFeatureEdit() {
           <Box>
             <Typography variant="body2" color="text.secondary" mb={0.5}>Hero Image</Typography>
             {heroSrc && (
-              <Box
-                component="img"
+              <img
                 src={heroSrc}
                 alt="hero preview"
-                sx={{ maxWidth: 200, maxHeight: 120, objectFit: "cover", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider", mb: 1 }}
+                style={{ maxWidth: "200px", maxHeight: "120px", objectFit: "cover", display: "block", borderRadius: "4px", border: "1px solid rgba(0,0,0,0.12)", marginBottom: "8px" }}
               />
             )}
             <Button variant="outlined" component="label" size="small">

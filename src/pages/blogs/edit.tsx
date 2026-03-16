@@ -117,11 +117,10 @@ export function BlogEdit() {
               <Typography variant="body2" color="text.secondary" mb={0.5}>
                 {previewUrl ? "New Image Preview" : "Current Image"}
               </Typography>
-              <Box
-                component="img"
+              <img
                 src={displaySrc}
                 alt="preview"
-                sx={{ maxWidth: 300, maxHeight: 180, objectFit: "cover", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider" }}
+                style={{ maxWidth: "300px", maxHeight: "180px", objectFit: "cover", display: "block", borderRadius: "4px", border: "1px solid rgba(0,0,0,0.12)" }}
               />
             </Box>
           )}

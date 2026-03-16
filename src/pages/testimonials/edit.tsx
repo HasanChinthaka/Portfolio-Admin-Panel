@@ -33,7 +33,7 @@ export function TestimonialEdit() {
 
   const record = query?.data?.data;
   const { result: clientsResult } = useList({ resource: "clients", pagination: { mode: "off" } });
-  const clients = clientsResult.data ?? [];
+  const clients = clientsResult?.data ?? [];
 
   useEffect(() => {
     if (record) {
@@ -111,11 +111,10 @@ export function TestimonialEdit() {
               <Typography variant="body2" color="text.secondary" mb={0.5}>
                 {previewUrl ? "New Image Preview" : "Current Avatar"}
               </Typography>
-              <Box
-                component="img"
+              <img
                 src={displaySrc}
                 alt="preview"
-                sx={{ maxWidth: 120, maxHeight: 120, objectFit: "cover", display: "block", borderRadius: "50%", border: "1px solid", borderColor: "divider" }}
+                style={{ width: "80px", height: "80px", objectFit: "cover", display: "block", borderRadius: "50%", border: "1px solid rgba(0,0,0,0.12)" }}
               />
             </Box>
           )}
