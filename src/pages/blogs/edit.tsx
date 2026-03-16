@@ -52,6 +52,8 @@ export function BlogEdit() {
     }),
   };
 
+  const displaySrc = previewUrl ?? record?.image ?? null;
+
   return (
     <Edit saveButtonProps={customSave} resource="blogs">
       <Stack spacing={2} mt={2}>
@@ -110,14 +112,14 @@ export function BlogEdit() {
           )}
         />
         <Box>
-          {(previewUrl ?? record?.image) && (
+          {displaySrc && (
             <Box mb={1}>
               <Typography variant="body2" color="text.secondary" mb={0.5}>
                 {previewUrl ? "New Image Preview" : "Current Image"}
               </Typography>
               <Box
                 component="img"
-                src={previewUrl ?? record.image}
+                src={displaySrc}
                 alt="preview"
                 sx={{ maxWidth: 300, maxHeight: 180, objectFit: "cover", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider" }}
               />

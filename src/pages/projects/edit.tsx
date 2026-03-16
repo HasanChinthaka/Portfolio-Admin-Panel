@@ -73,6 +73,8 @@ export function ProjectEdit() {
     }),
   };
 
+  const displaySrc = previewUrl ?? record?.imageUrl ?? null;
+
   return (
     <Edit saveButtonProps={customSave} resource="projects">
       <Stack spacing={2} mt={2}>
@@ -218,14 +220,14 @@ export function ProjectEdit() {
         />
 
         <Box>
-          {(previewUrl ?? record?.imageUrl) && (
+          {displaySrc && (
             <Box mb={1}>
               <Typography variant="body2" color="text.secondary" mb={0.5}>
                 {previewUrl ? "New Image Preview" : "Current Image"}
               </Typography>
               <Box
                 component="img"
-                src={previewUrl ?? record.imageUrl}
+                src={displaySrc}
                 alt="preview"
                 sx={{ maxWidth: 200, maxHeight: 150, objectFit: "contain", display: "block", borderRadius: 1, border: "1px solid", borderColor: "divider" }}
               />
