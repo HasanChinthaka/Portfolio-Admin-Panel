@@ -13,12 +13,14 @@ import {
   useThemedLayoutContext,
 } from "@refinedev/mui";
 import { CssBaseline, ThemeProvider, Box } from "@mui/material";
+import { useMemo } from "react";
 import routerBindings, {
   NavigateToResource,
   CatchAllNavigate,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router";
-import { theme } from "./theme";
+import { createAppTheme } from "./theme";
+import { ThemeModeProvider, useThemeMode } from "./contexts/ThemeContext";
 import { CustomSider } from "./components/CustomSider";
 import { CustomHeader } from "./components/CustomHeader";
 import { ErrorBoundary } from "./components/ErrorBoundary";
@@ -110,11 +112,14 @@ function AppLayout() {
   );
 }
 
-function App() {
+function ThemedApp() {
+  const { mode } = useThemeMode();
+  const appTheme = useMemo(() => createAppTheme(mode), [mode]);
+
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
+    <ThemeProvider theme={appTheme}>
+      <CssBaseline />
+      <BrowserRouter>
         <RefineSnackbarProvider>
         <Refine
           routerProvider={routerBindings}
@@ -341,8 +346,16 @@ function App() {
           <UnsavedChangesNotifier />
         </Refine>
         </RefineSnackbarProvider>
-      </ThemeProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ThemeProvider>
+  );
+}
+
+function App() {
+  return (
+    <ThemeModeProvider>
+      <ThemedApp />
+    </ThemeModeProvider>
   );
 }
 
