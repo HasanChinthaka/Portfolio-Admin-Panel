@@ -33,7 +33,7 @@ export function BlogEdit() {
       setValue("title", record.title ?? "");
       setValue("content", record.content ?? "");
       setValue("author", record.author ?? "");
-      setValue("tags", (record.tags ?? []).join(", "));
+      setValue("tags", Array.isArray(record.tags) ? record.tags.join(", ") : "");
       setValue("publishedAt", record.publishedAt?.substring(0, 10) ?? "");
       setValue("url", record.url ?? "");
       setValue("isPublished", record.isPublished ?? true);

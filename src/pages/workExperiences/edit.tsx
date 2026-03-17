@@ -35,7 +35,7 @@ export function WorkExperienceEdit() {
       setValue("company_site", record.company_site ?? "");
       setValue("startDate", record.startDate?.substring(0, 10) ?? "");
       setValue("endDate", record.endDate?.substring(0, 10) ?? "");
-      setValue("responsibilities", (record.responsibilities ?? []).join("\n"));
+      setValue("responsibilities", Array.isArray(record.responsibilities) ? record.responsibilities.join("\n") : "");
       setValue("isPublic", record.isPublic ?? true);
     }
   }, [record]);

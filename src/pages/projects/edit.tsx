@@ -54,11 +54,11 @@ export function ProjectEdit() {
       setValue("isPublished", record.isPublished ?? true);
       setValue(
         "techStack",
-        (record.techStack ?? []).map((s: any) => s._id ?? s)
+        Array.isArray(record.techStack) ? record.techStack.map((s: any) => s._id ?? s) : []
       );
       setValue(
         "category",
-        (record.category ?? []).map((c: any) => c._id ?? c)
+        Array.isArray(record.category) ? record.category.map((c: any) => c._id ?? c) : []
       );
       setValue("client", record.client?._id ?? record.client ?? "");
     }
@@ -108,11 +108,13 @@ export function ProjectEdit() {
                 {...field}
                 multiple
                 input={<OutlinedInput label="Tech Stack" />}
-                renderValue={(selected: string[]) => (
+                renderValue={(selected: any[]) => (
                   <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                    {selected.map((id) => {
+                    {(selected ?? []).map((item: any) => {
+                      const id = typeof item === "string" ? item : (item?._id ?? item?.id ?? "");
                       const skill = skills.find((s: any) => s.id === id);
-                      return <Chip key={id} label={skill?.name ?? id} size="small" />;
+                      const label = skill?.name ?? (typeof item === "object" ? (item?.name ?? id) : item);
+                      return id ? <Chip key={id} label={label} size="small" /> : null;
                     })}
                   </Box>
                 )}
@@ -138,11 +140,13 @@ export function ProjectEdit() {
                 {...field}
                 multiple
                 input={<OutlinedInput label="Category" />}
-                renderValue={(selected: string[]) => (
+                renderValue={(selected: any[]) => (
                   <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                    {selected.map((id) => {
+                    {(selected ?? []).map((item: any) => {
+                      const id = typeof item === "string" ? item : (item?._id ?? item?.id ?? "");
                       const cat = categories.find((c: any) => c.id === id);
-                      return <Chip key={id} label={cat?.name ?? id} size="small" />;
+                      const label = cat?.name ?? (typeof item === "object" ? (item?.name ?? id) : item);
+                      return id ? <Chip key={id} label={label} size="small" /> : null;
                     })}
                   </Box>
                 )}

@@ -21,6 +21,7 @@ import routerBindings, {
 import { theme } from "./theme";
 import { CustomSider } from "./components/CustomSider";
 import { CustomHeader } from "./components/CustomHeader";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 import { authProvider } from "./providers/authProvider";
 import { dataProvider } from "./providers/dataProvider";
@@ -101,7 +102,9 @@ function AppLayout() {
           transition: "margin-left 0.25s ease",
         }}
       >
-        <Outlet />
+        <ErrorBoundary>
+          <Outlet />
+        </ErrorBoundary>
       </Box>
     </>
   );

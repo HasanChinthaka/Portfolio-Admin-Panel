@@ -25,7 +25,7 @@ export function ContactInfoEdit() {
   useEffect(() => {
     if (record) {
       setValue("name", record.name ?? "");
-      setValue("value", (record.value ?? []).join(", "));
+      setValue("value", Array.isArray(record.value) ? record.value.join(", ") : (record.value ?? ""));
       setValue("link", record.link ?? "");
       setValue("icon", record.icon ?? "");
       setValue("color", record.color ?? "");
